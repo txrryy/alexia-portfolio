@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexia Burford</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+    }
+
+    nav {
+      background-color: #d8bfd8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff69b4;
+    }
+
+    .hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 2rem;
+  text-align: left;
+  background: linear-gradient(to right, #e6e6fa, #fff0f5);
+  animation: fadeIn 1s ease-in;
+  flex-wrap: wrap;
+}
+
+.hero .profile-pic {
+  width: 250px;
+  height: 250px;
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #c71585;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 600px;
+    }
+
+    .cta-button {
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #d160a1;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      background-color: white;
+
+      text-align: center;
+      animation: fadeUp 1.2s ease-in;
+    }
+
+    section h2 {
+      color: #c71585;
+      margin-bottom: 1rem;
+    }
+    .animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.butterfly, .shape {
+  position: absolute;
+  opacity: 0.6;
+  animation: float 20s linear infinite;
+  pointer-events: none;
+}
+
+.butterfly {
+  width: 40px;
+  height: 40px;
+  background-image: url('imgs/butterflyIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.shape {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 182, 193, 0.5);
+  border-radius: 50%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+  .animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.butterfly, .shape {
+  position: absolute;
+  opacity: 0.6;
+  animation: float 20s linear infinite;
+  pointer-events: none;
+}
+
+.butterfly {
+  width: 40px;
+  height: 40px;
+  background-image: url('imgs/butterflyIcon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.shape {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 182, 193, 0.5);
+  border-radius: 50%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.research-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 2rem;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.research-container.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.research-card {
+  max-width: 300px;
+  text-align: center;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.research-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.research-card img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.involvement-wrapper {
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+
+.involvement-scroll {
+  display: flex;
+  gap: 1.5rem;
+  animation: scrollLeft 20s linear infinite;
+}
+
+.involvement-wrapper:hover .involvement-scroll {
+  animation-play-state: paused;
+}
+
+.involvement-card {
+  min-width: 210px;
+  max-width: 210px;
+  background-color: #fff;
+  border-radius: 12px;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: inline-block;
+  white-space: normal;
+  flex-shrink: 0;
+}
+
+.involvement-card img {
+  width: 80px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+}
+
+
+.profile-pic {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #ff69b4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.involvement-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #ff69b4;
+  margin-left: 5px;
+  animation: blink 0.75s step-end infinite;
+  vertical-align: baseline;
+    transform: translateY(1.5px); /* <-- Adjust this value to move the cursor up or down */
+
+
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+
+
+
+    footer {
+      background-color: #d8bfd8;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+
+
+
+  </style>
+</head>
+<link rel="icon" type="image/x-icon" href="imgs/AB.png">
+
+<body>
+    <div class="animated-bg">
+  <!-- Butterflies -->
+  <div class="butterfly" style="left: 5%; animation-delay: 0s;"></div>
+  <div class="butterfly" style="left: 25%; animation-delay: 5s;"></div>
+  <div class="butterfly" style="left: 50%; animation-delay: 10s;"></div>
+  <div class="butterfly" style="left: 75%; animation-delay: 15s;"></div>
+
+  <!-- Floating soft shapes -->
+  <div class="shape" style="left: 10%; animation-delay: 2s;"></div>
+  <div class="shape" style="left: 35%; animation-delay: 6s;"></div>
+  <div class="shape" style="left: 60%; animation-delay: 8s;"></div>
+  <div class="shape" style="left: 80%; animation-delay: 12s;"></div>
+</div>
+
+  <nav>
+    <div class="logo"><a href="#">Alexia</a></div>
+    <div>
+        <a href="#Alexia"></a>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#involvement">Campus Life</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+  <img src="logos/pfp.jpeg" alt="Profile Picture of Alexia Burford" class="profile-pic">
+
+  <div class="hero-content">
+    <h1>Hi, I'm Alexia Burford</h1>
+    <p>Honors Psychology Major | Researcher | Howard University | Aspiring Ph.D. | Mental Health Advocate</p>
+    <a href="#about"><button class="cta-button">Explore My Story</button></a>
+  </div>
+</div>
+
+
+  <section id="about">
+  <h2>About Me</h2>
+  <div style="max-width: 900px; margin: 0 auto; background-color: white; padding: 2.5rem 2rem; border-radius: 16px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); animation: fadeIn 1.2s ease-in;">
+    
+<p id="typed-about" style="font-size: 1.15rem; line-height: 1.8; color: #444; white-space: pre-wrap;">
+  <span id="typed-text"></span><span id="cursor" class="typing-cursor"></span>
+</p>
+
+  <ul id="typed-list" style="font-size: 1rem; color: #555; text-align: left; max-width: 800px; margin: 2rem auto 0; padding-left: 1.5rem; list-style: disc;
+">
+      <!-- <li>💡 <strong>Scholar:</strong> Honors student with research experience at Johns Hopkins and Brown University.</li>
+      <li>💗 <strong>Advocate:</strong> Passionate about mental health access and wellness for underserved communities.</li>
+      <li>🌍 <strong>Leader:</strong> Mentorship and outreach leader through organizations like Precious Pearls and Bison Strive.</li>
+      <li>🎓 <strong>Future Ph.D.:</strong> Aspiring to pursue graduate study in Clinical Psychology and impact national mental health policy.</li> -->
+    </ul>
+  </div>
+</section>
+
+
+  <section id="research">
+  <h2>Research & Projects</h2>
+  <div class="research-container" id="researchCards">
+
+    <div class="research-card">
+      <img src="logos/Johns-Hopkins-University-Logo.png" alt="Johns Hopkins Logo">
+      <h4>Cognition & Vision Sciences Lab</h4>
+      <p>Undergraduate Researcher at Johns Hopkins University (Summer 2025)...</p>
+    </div>
+
+    <div class="research-card">
+      <img src="logos/Brown-University-Logo.png" alt="Brown University Logo">
+      <h4>Independent Researcher</h4>
+      <p>Completed a research project at Brown University (Summer 2024)...</p>
+    </div>
+
+    <!-- Add more cards as needed -->
+
+  </div>
+</section>
+
+
+
+ <section id="involvement">
+  <h2>Campus Involvement</h2>
+  <div class="involvement-wrapper">
+    <div class="involvement-scroll">
+
+      <!-- Set 1 -->
+      <div class="scroll-track">
+        <!-- Rankin Chapel -->
+        <div class="involvement-card">
+          <img src="logos/chapel.png" alt="Rankin Chapel Logo">
+          <h4>Rankin Chapel</h4>
+          <p>Newsletter Coordinator and Chapel Assistant. Supports communications and stage coordination during weekly services.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/ppLogo.jpeg" alt="Precious Pearls Logo">
+          <h4>Precious Pearls Youth Outreach</h4>
+          <p>Vice President. Leads mentoring and professional workshops for girls aged 11–18 across the DMV area.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/changemakers.png" alt="Global Changemakers Logo">
+          <h4>Global Changemakers Fellow</h4>
+          <p>First cohort member promoting youth innovation and impact.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/psychClub.jpg" alt="Psychology Club Logo">
+          <h4>Psychology Club</h4>
+          <p>Active member contributing to academic and social psychology discussions on campus.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/nsls.png" alt="NSLS Logo">
+          <h4>Sigma Alpha Pi</h4>
+          <p>Member of the National Society of Leadership & Success. Participates in workshops and leadership trainings.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/veritas.jpg" alt="Volunteer et Veritas Logo">
+          <h4>Volunteer et Veritas</h4>
+          <p>Service volunteer across DC, Maryland, and Virginia aiding underserved communities.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/butterfly.jpg" alt="Butterfly Village Logo">
+          <h4>Butterfly Village</h4>
+          <p>Mentor in STEM Academy. Assists with enrichment programs and community outreach.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/resfest.jpg" alt="Resfest Logo">
+          <h4>Resfest 2025</h4>
+          <p>Step Competition Coordinator. Organized and led one of Howard's key spirited campus events.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/bisonStrive.jpg" alt="Bison Strive Logo">
+          <h4>Bison Strive</h4>
+          <p>Mentorship staffer for pre-professional students. Supports academic & career development.</p>
+        </div>
+      </div>
+
+      <!-- Set 2 (identical for looping) -->
+      <div class="scroll-track">
+        <!-- DUPLICATE all cards again -->
+        <div class="involvement-card">
+          <img src="logos/chapel.png" alt="Rankin Chapel Logo">
+          <h4>Rankin Chapel</h4>
+          <p>Newsletter Coordinator and Chapel Assistant. Supports communications and stage coordination during weekly services.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/ppLogo.jpeg" alt="Precious Pearls Logo">
+          <h4>Precious Pearls Youth Outreach</h4>
+          <p>Vice President. Leads mentoring and professional workshops for girls aged 11–18 across the DMV area.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/changemakers.png" alt="Global Changemakers Logo">
+          <h4>Global Changemakers Fellow</h4>
+          <p>First cohort member promoting youth innovation and impact.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/psychClub.jpg" alt="Psychology Club Logo">
+          <h4>Psychology Club</h4>
+          <p>Active member contributing to academic and social psychology discussions on campus.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/nsls.png" alt="NSLS Logo">
+          <h4>Sigma Alpha Pi</h4>
+          <p>Member of the National Society of Leadership & Success. Participates in workshops and leadership trainings.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/veritas.jpg" alt="Volunteer et Veritas Logo">
+          <h4>Volunteer et Veritas</h4>
+          <p>Service volunteer across DC, Maryland, and Virginia aiding underserved communities.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/butterfly.jpg" alt="Butterfly Village Logo">
+          <h4>Butterfly Village</h4>
+          <p>Mentor in STEM Academy. Assists with enrichment programs and community outreach.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/resfest.jpg" alt="Resfest Logo">
+          <h4>Resfest 2025</h4>
+          <p>Step Competition Coordinator. Organized and led one of Howard's key spirited campus events.</p>
+        </div>
+
+        <div class="involvement-card">
+          <img src="logos/bisonStrive.jpg" alt="Bison Strive Logo">
+          <h4>Bison Strive</h4>
+          <p>Mentorship staffer for pre-professional students. Supports academic & career development.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <section id="contact">
+    <h2>Let’s Connect</h2>
+    <p>Email: alexia.burford@bison.howard.edu<br>LinkedIn: <a href="https://www.linkedin.com/in/alexia-burford-043333283/" target="_blank">Alexia Burford</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Alexia Burford | Created by Terry Albright Jr
+  </footer>
+
+
+  <script>
+    const aboutText = `I’m Alexia Burford, a proud Bison and member of the inaugural Humanities & Social Sciences Honors Program at Howard University. Currently a rising junior majoring in Honors Psychology with a minor in Afro-American Studies, I maintain a 3.8 GPA while actively engaging in research and service. My passion lies at the intersection of mental health, youth advocacy, and equity in education.`;
+
+  const typedSpan = document.getElementById("typed-text");
+  const cursor = document.getElementById("cursor");
+  let index = 0;
+
+  function typeEffect() {
+    if (index < aboutText.length) {
+      typedSpan.textContent += aboutText.charAt(index);
+      index++;
+      setTimeout(typeEffect, 25);
+    } else {
+      typeListItems();
+    }
+  }
+
+  const listItems = [
+    "Honors Psychology Major with Afro-American Studies minor",
+    "3.8 GPA & Humanities Honors Scholar",
+    "Undergraduate Researcher in Cognitive Science",
+    "Passionate about Mental Health Equity",
+    "Youth Mentor and Leadership Advocate"
+  ];
+
+  const ulElement = document.getElementById("typed-list");
+  let currentItem = 0;
+
+  function typeListItems() {
+    if (currentItem < listItems.length) {
+      const li = document.createElement("li");
+      li.style.opacity = 0;
+      li.textContent = listItems[currentItem];
+      ulElement.appendChild(li);
+
+      setTimeout(() => {
+        li.style.transition = "opacity 0.5s ease-in";
+        li.style.opacity = 1;
+      }, 50);
+
+      currentItem++;
+      setTimeout(typeListItems, 600);
+    } else {
+      // Hide the cursor when everything is typed
+      cursor.style.display = "none";
+    }
+  }
+
+  window.addEventListener("load", typeEffect);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const researchCards = document.getElementById('researchCards');
+  observer.observe(researchCards);
+</script>
+</body>
+</html>
